@@ -18,16 +18,21 @@ public class GameHandler implements RequestHandler<Object,Object> {
 	
 	@Override
 	public Object handleRequest(Object input, Context context) {
-	
 		Map<String,String> inputMap=(Map<String,String>)input;
 		String resourcePath=inputMap.get("resourcePath");
 		String userId=inputMap.get("userId");
 		String gameTitle=inputMap.get("gameTitle");
+		//System.out.println(userId+":"+gameTitle);
 		
 		String environment=System.getenv("environment").toString();
-		String path=resourcePath.substring(resourcePath.substring(0,resourcePath.
-				substring(0,resourcePath.lastIndexOf('/')).lastIndexOf('/')).lastIndexOf('/'));
+		/*String path=resourcePath.substring(resourcePath.substring(0,resourcePath.
+				substring(0,resourcePath.lastIndexOf('/')).lastIndexOf('/')).lastIndexOf('/'));*/
 		
+		String path=resourcePath.substring(resourcePath.substring(0,resourcePath.substring(0,
+				resourcePath.substring(0,resourcePath.substring(0,resourcePath.substring(0,resourcePath.lastIndexOf("/"))
+						.lastIndexOf("/")).lastIndexOf("/")).lastIndexOf("/")).lastIndexOf("/")).length(),
+				resourcePath.substring(0,resourcePath.lastIndexOf("/")).lastIndexOf("/"));
+		//System.out.println(path);
 		GameValidation gameValidation=new GameValidation();
 		GameWebServiceResponse response=new GameWebServiceResponse();
 		if(!gameValidation.validate(userId)||!gameValidation.validate(gameTitle)){
@@ -51,11 +56,12 @@ public class GameHandler implements RequestHandler<Object,Object> {
 		switch(path){
 		case(get):
 			response=service.get(response,inputMap,prop);
+			break;
 			
 		case(put):
 			response=service.put(response, inputMap, prop);
+			break;
 		}
 		return response;
 	}
-
 }

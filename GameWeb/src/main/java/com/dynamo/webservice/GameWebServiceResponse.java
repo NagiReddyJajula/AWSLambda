@@ -1,5 +1,9 @@
 package com.dynamo.webservice;
 
+/**
+ * @author INDIA
+ *
+ */
 public class GameWebServiceResponse {
 
 	private int statusCode;
@@ -32,5 +36,8 @@ public class GameWebServiceResponse {
 	public void setPayload(Object payload) {
 		this.payload = payload;
 	}
-	
+	@Override
+	public String toString() {
+		return "GameWebServiceResponse [statusCode=" + statusCode + ", status=" + status + ", payload=" + payload + "]";
+	}
 }

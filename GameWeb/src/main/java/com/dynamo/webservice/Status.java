@@ -6,7 +6,8 @@ public enum Status {
 	AUTHENTICATION_ERROR("Authentication_Error"),
 	BUSINESS_ERROR("Business_Error"),
 	DATABASE_ERROR("Database_Error"),
-	UNKNOWN_ERROR("Unknown_Error");
+	UNKNOWN_ERROR("Unknown_Error"),
+	SUCCESSFUL("Successful");
 	
 	private final String msg;
 	private Status(final String data){

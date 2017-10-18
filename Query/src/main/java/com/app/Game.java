@@ -1,4 +1,4 @@
-package com.dynamo.mapper.pojo;
+package com.app;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
@@ -17,7 +17,7 @@ public class Game {
 	private String userId;
 	
 	@DynamoDBRangeKey(attributeName="GameTitle")
-	@DynamoDBIndexHashKey(attributeName="GameTitle",globalSecondaryIndexNames={"GameTitleTopScore-index","GameTitle-index"})
+	@DynamoDBIndexHashKey(attributeName="GameTitle",globalSecondaryIndexName="GameTitleTopScore-index")
 	@DynamoDBTyped(DynamoDBAttributeType.S)
 	private String gameTitle;
 	

@@ -14,33 +14,50 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <dependencies>
-    <!-- <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency> -->
-    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb -->
+<dependencies>
+	<!-- dax java client custom jar -->
+	<dependency>
+		<groupId>com.amazonaws</groupId>
+		<artifactId>aws-dax-java-client</artifactId>
+		<version>1.0.841</version>
+	</dependency>
+   <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb -->
 <dependency>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-dynamodb</artifactId>
     <version>1.11.177</version>
+    <exclusions>
+    	<exclusion>
+    		<groupId>com.amazonaws</groupId>
+    		<artifactId>aws-java-sdk-kms</artifactId>
+    	</exclusion>
+    	<exclusion>
+    		<groupId>com.amazonaws</groupId>
+    		<artifactId>aws-java-sdk-s3</artifactId>
+    	</exclusion>
+    </exclusions>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core -->
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core -->
 <dependency>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-core</artifactId>
     <version>1.11.177</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core -->
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-lambda -->
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-lambda</artifactId>
+    <version>1.11.177</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core -->
 <dependency>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-lambda-java-core</artifactId>
     <version>1.1.0</version>
 </dependency>
-    
-  </dependencies>
+
+
+</dependencies>
     
   <build>
     <plugins>
@@ -66,9 +83,9 @@
 						<goals>
 							<goal>shade</goal>
 						</goals>
-						<configuration>
+<!-- 						<configuration>
               <minimizeJar>true</minimizeJar>
-            </configuration>
+            </configuration> -->
 					</execution>
 				</executions>
 		</plugin>
