@@ -70,6 +70,7 @@ public class GameDataMigration {
 				for(int i=0;i<r.length;i++){
 					if(r[i]!=null)
 						dataType.add(r[i]);
+					System.out.println();
 				}
 				count++;
 			}
